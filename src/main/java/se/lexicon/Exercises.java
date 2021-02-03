@@ -94,13 +94,9 @@ public class Exercises {
     public static void exercise6(String message){
         System.out.println(message);
         //Write your code here
-//        Predicate<Person> onlyMale = p->p.getGender().equals(Gender.MALE);
-//        Predicate<Person> startsId = p->p.getFirstName().startsWith("E");
-//        storage.findManyAndMapEachToString();
         Predicate<Person> startsWithE = p->p.getFirstName().startsWith("E")&& p.getGender().equals(Gender.MALE);
-        //Predicate<Person> allMalePersons = p->p.getGender().equals(Gender.MALE);
         Function<Person,String> pToStr = p-> p.getFirstName() + " " + p.getLastName();
-        //Function<Person,String> pToStr = p->String.valueOf(p.getGender() == Gender.MALE);
+
         List<String> strList = storage.findManyAndMapEachToString(startsWithE,pToStr);
         strList.forEach(System.out::println);
 
@@ -121,11 +117,7 @@ public class Exercises {
         allYoungPeople.forEach(System.out::println);
 
         System.out.println("----------------------");
-//        System.out.println(message);
-//        Predicate<Person> filterAge = person -> Period.between(person.getBirthDate(), LocalDate.now()).getYears() < 10;
-//        Function<Person, String> filterString = person -> person.getFirstName() + " " + person.getLastName() + " " + Period.between(person.getBirthDate(), LocalDate.now()).getYears() + " years";
-//        List <String> result = storage.findManyAndMapEachToString(filterAge,filterString);
-//        result.forEach(p -> System.out.println(p));
+//
     }
 
     /*
@@ -134,6 +126,9 @@ public class Exercises {
     public static void exercise8(String message){
         System.out.println(message);
         //Write your code here
+        Predicate<Person> ulfs = p->p.getFirstName().equalsIgnoreCase("Ulf");
+        Consumer<Person> ulfConsumer = p-> System.out.println(p.getFirstName() + " " + p.getLastName());
+        storage.findAndDo(ulfs, ulfConsumer);
 
 
         System.out.println("----------------------");
