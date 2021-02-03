@@ -139,8 +139,11 @@ public class Exercises {
      */
     public static void exercise9(String message){
         System.out.println(message);
-        //Write your code here
 
+        //Write your code here
+        Predicate<Person> personsWithSame = p-> p.getLastName().contains(p.getFirstName());
+        Consumer<Person> sameConsumer = p-> System.out.println(p.getFirstName() + " " + p.getLastName());
+        storage.findAndDo(personsWithSame, sameConsumer);
         System.out.println("----------------------");
     }
 
