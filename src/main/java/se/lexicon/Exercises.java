@@ -197,7 +197,9 @@ public class Exercises {
     public static void exercise13(String message){
         System.out.println(message);
         //Write your code here
-
+        Comparator<Person> sortAllPeople = Comparator.comparing(Person::getLastName).thenComparing(Person::getFirstName).thenComparing(Person::getBirthDate);
+        List<Person> personList = storage.findAndSort(sortAllPeople);
+        personList.forEach(System.out::println);
         System.out.println("----------------------");
     }
 }
