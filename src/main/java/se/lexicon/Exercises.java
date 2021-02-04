@@ -6,6 +6,7 @@ import se.lexicon.model.Person;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -153,6 +154,11 @@ public class Exercises {
     public static void exercise10(String message){
         System.out.println(message);
         //Write your code here
+        //Predicate<Person> palindrome = p->p.getFirstName()
+        //storage.findAndDo();
+        Predicate<Person> isSame = p-> new StringBuilder(p.getFirstName()).reverse().toString().equalsIgnoreCase(p.getFirstName());
+        Consumer<Person> printFullName = p-> System.out.println(p.getFirstName() + " " + p.getLastName());
+        storage.findAndDo(isSame, printFullName);
 
         System.out.println("----------------------");
     }
@@ -163,6 +169,8 @@ public class Exercises {
     public static void exercise11(String message){
         System.out.println(message);
         //Write your code here
+
+
 
         System.out.println("----------------------");
     }
