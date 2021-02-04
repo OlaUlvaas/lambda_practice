@@ -183,6 +183,10 @@ public class Exercises {
     public static void exercise12(String message){
         System.out.println(message);
         //Write your code here
+        Predicate<Person> personBefore50 = p->p.getBirthDate().isBefore(LocalDate.of(1950,1,1));
+        Comparator<Person> reversingPers = Comparator.comparing(Person::getBirthDate).reversed();
+        List<Person> personList = storage.findAndSort(personBefore50, reversingPers);
+        personList.forEach(System.out::println);
 
         System.out.println("----------------------");
     }
