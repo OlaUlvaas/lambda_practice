@@ -169,8 +169,10 @@ public class Exercises {
     public static void exercise11(String message){
         System.out.println(message);
         //Write your code here
-
-
+        Predicate<Person> findAPerson = p->p.getFirstName().startsWith("A");
+        Comparator<Person> findByBirthday = Comparator.comparing(Person::getBirthDate);
+        List<Person> personList = storage.findAndSort(findAPerson, findByBirthday);
+        personList.forEach(System.out::println);
 
         System.out.println("----------------------");
     }
